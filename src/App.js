@@ -133,7 +133,7 @@ function App() {
       <div className="wrapper">
         {cartOpened && <Drawer sendOreder={sendOreder} cartItems={cartItems} onClose={handlerCloseCart} onRemove={addToCart} />}
         <Header onClickCloseCart={handlerCloseCart} />
-        <Route path='/' exact>
+        <Route path='' exact>
           <Home
             isLiked={isLiked}
             sneakers={sneakers}
@@ -144,10 +144,10 @@ function App() {
             onAddToFavorite={onAddToFavorite}
             addToCart={addToCart} />
         </Route>
-        <Route path='/favorites' exact>
+        <Route path='favorites' exact>
           <Favorites sneakers={favorites} isLiked={isLiked} onAddToFavorite={onAddToFavorite} />
         </Route>
-        <Route path='/order' exact>
+        <Route path='order' exact>
           <Orders onAddToFavorite={onAddToFavorite} />
         </Route>
       </div>

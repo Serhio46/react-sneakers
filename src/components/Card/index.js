@@ -10,8 +10,8 @@ import styles from './Card.module.scss';
 
 function Card({ isLiked, onAddToCart, onFavorite, isLoading = false, title, price, imageURL, keys, id }) {
 
-	
-	
+
+
 	const obj = { title, price, imageURL, keys, id };
 
 	const { isItemAdded } = useContext(CartContext)
@@ -45,7 +45,7 @@ function Card({ isLiked, onAddToCart, onFavorite, isLoading = false, title, pric
 				<rect x="146" y="198" rx="9" ry="9" width="32" height="32" />
 			</ContentLoader> : <>
 				{onFavorite && <div className={styles.favorite} onClick={onClickLike} >
-					<img src={isLiked(keys) ? "img/liked.svg" : "/img/unliked.svg"} alt="unliked" />
+					<img src={isLiked(keys) ? "img/liked.svg" : "img/unliked.svg"} alt="unliked" />
 				</div>}
 
 				<img width={133} height={112} src={imageURL} alt="" />
@@ -55,7 +55,7 @@ function Card({ isLiked, onAddToCart, onFavorite, isLoading = false, title, pric
 						<span>ЦЕНА</span>
 						<b>{price} руб.</b>
 					</div>
-					<img onClick={onClickAdd} src={isItemAdded(keys) ? "/img/btn-checked.svg" : "/img/btn-plus.svg"} alt="" />
+					<img onClick={onClickAdd} src={isItemAdded(keys) ? "img/btn-checked.svg" : "img/btn-plus.svg"} alt="" />
 				</div>}
 			</>}
 		</div>)

@@ -4,7 +4,7 @@ function Info({ onClose, title, description, image }) {
 			<img width={120} src={image} alt="emptyCart" />
 			<h2>{title}</h2>
 			<p>{description}</p>
-			<button onClick={onClose} className='greenButton rotate'><img src={"/img/arrow.svg"} alt="arrow" />Вернуться назад</button>
+			<button onClick={onClose} className='greenButton rotate'><img src={"img/arrow.svg"} alt="arrow" />Вернуться назад</button>
 		</div>
 	);
 };

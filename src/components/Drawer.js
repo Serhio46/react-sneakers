@@ -7,7 +7,7 @@ function Drawer({ onRemove, onClose, cartItems, sendOreder }) {
 
 	const [isOrderComplet, setIsOrderComplet] = useState(false);
 	const [isLoading, setIsLoading] = useState(false);
-	const {totalPrice} = useCart();
+	const { totalPrice } = useCart();
 
 	const onClickOrder = () => {
 		setIsLoading(true);
@@ -19,8 +19,8 @@ function Drawer({ onRemove, onClose, cartItems, sendOreder }) {
 	return (
 		<div className="overlay">
 			<div className="drawer">
-				<h2>Корзина <img onClick={onClose} className='btn-remove' src="/img/btn-remove.svg" alt="remove" /></h2>
-				
+				<h2>Корзина <img onClick={onClose} className='btn-remove' src="img/btn-remove.svg" alt="remove" /></h2>
+
 				{cartItems.length > 0 ?
 					<>
 						<div className="items">
@@ -32,7 +32,7 @@ function Drawer({ onRemove, onClose, cartItems, sendOreder }) {
 											<p>{obj.title}</p>
 											<b>{obj.price} руб.</b>
 										</div>
-										<img onClick={() => onRemove(obj)} className='btn-remove' src="/img/btn-remove.svg" alt="remove" />
+										<img onClick={() => onRemove(obj)} className='btn-remove' src="img/btn-remove.svg" alt="remove" />
 									</div>
 								)
 							})}
@@ -50,13 +50,13 @@ function Drawer({ onRemove, onClose, cartItems, sendOreder }) {
 									<b>{totalPrice * 0.05} руб.</b>
 								</li>
 							</ul>
-							<button disabled={isLoading} onClick={onClickOrder} className='greenButton'>Оформить заказ <img src="/img/arrow.svg" alt="arrow" /></button>
+							<button disabled={isLoading} onClick={onClickOrder} className='greenButton'>Оформить заказ <img src="img/arrow.svg" alt="arrow" /></button>
 						</div></> :
 					<Info
 						onClose={onClose}
 						title={isOrderComplet ? 'Заказ оформлен' : 'Корзина пуста'}
 						description={isOrderComplet ? 'Менеджер свяжется с Вами в течение 15 минут' : 'Добавьте хотя бы одну пару кросcовок'}
-						image={isOrderComplet ? "/img/complete-order.jpg" : "/img/empty-cart.jpg"}
+						image={isOrderComplet ? "img/complete-order.jpg" : "img/empty-cart.jpg"}
 					/>
 				}
 			</div>

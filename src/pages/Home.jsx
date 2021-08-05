@@ -22,8 +22,8 @@ function Home({ isLoading, sneakers, searchValue, setSearchValue, onChangeSearch
 			<div className='title'>
 				<h1>{searchValue ? `Пооиск по: ${searchValue}` : 'Все кроссовки'}</h1>
 				<div className='search-block'>
-					<img src="/img/search.svg" alt="search" />
-					<img onClick={() => setSearchValue('')} className='btn-remove clear' src="/img/btn-remove.svg" alt="remove" />
+					<img src="img/search.svg" alt="search" />
+					<img onClick={() => setSearchValue('')} className='btn-remove clear' src="img/btn-remove.svg" alt="remove" />
 					<input onChange={onChangeSearch} value={searchValue} type="text" placeholder='Поиск...' />
 				</div>
 			</div>
