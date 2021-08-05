@@ -53,48 +53,16 @@ function App() {
   }
     , []);
 
-
-  //Согласование стейта sneakers и favorites с данными на сервере в моменте
-  function changeSneaker(obj) {
-    let ind = sneakers.findIndex(item => +item.keys === +obj.keys);
-    if (ind !== -1) {
-      sneakers.splice(ind, 1, obj);
-      setSneakers(sneakers);
-    }
-  }
-
-  //Согласование стейта sneakers  с данными на сервере при перезагрузке приложения
-  useEffect(() => {
-    cartItems.forEach(obj => {
-      let ind = sneakers.findIndex(item => +item.keys === +obj.keys);
-      if (ind !== -1) {
-        sneakers.splice(ind, 1, obj);
-      }
-    });
-    setSneakers(sneakers);
-  }, [cartItems]);
-
-  //Согласование стейта favorites  с данными на сервере при перезагрузке приложения
-  useEffect(() => {
-    favorites.forEach(obj => {
-      let ind = sneakers.findIndex(item => +item.keys === +obj.keys);
-      if (ind !== -1) {
-        sneakers.splice(ind, 1, obj);
-      }
-    });
-    setSneakers(sneakers);
-  }, [favorites]);
-
-
   //Добавление и удаление товара в корзину
   const addToCart = async (obj) => {
     try {
-      if (cartItems.find(Item => +Item.keys === +obj.keys)) {
-        setCartItems(prew => prew.filter(item => +item.id !== +obj.id));
-        await axios.delete(`https://61012ec14e50960017c29c6a.mockapi.io/Cart/${obj.id}`);
+      const findItem = cartItems.find(Item => +Item.keys === +obj.keys);
+      if (findItem) {
+        setCartItems(prew => prew.filter(item => +item.keys !== +obj.keys));
+        await axios.delete(`https://61012ec14e50960017c29c6a.mockapi.io/Cart/${findItem.id}`);
       } else {
-        const { data } = await axios.post('https://61012ec14e50960017c29c6a.mockapi.io/Cart', obj); // тут немного притормоз идет, пока ждем ответ, а выше поднять не могу, сделать setCartItems(prew => [...prew, data]), а ниже setCartItems(prew => [...prew, data]);, тк будет работать не корректно
-        changeSneaker(data); //если changeSneakers  поменять местами с setCartItems уже начинает работать не верно, нужна помощь!!!
+        setCartItems(prew => [...prew, obj]);
+        const { data } = await axios.post('https://61012ec14e50960017c29c6a.mockapi.io/Cart', obj);
         setCartItems(prew => [...prew, data]);
       }
     } catch (error) {
@@ -141,14 +109,13 @@ function App() {
   //Добавление и удаление в/из закладки
   const onAddToFavorite = async (obj) => {
     try {
-      if (favorites.find(favObj => +favObj.keys === +obj.keys)) {
-        axios.delete(`https://61012ec14e50960017c29c6a.mockapi.io/favorites/${obj.id}`);
-        setFavorites(prew => {
-          return prew.filter(item => +item.id !== +obj.id);
-        })
+      const findItem = favorites.find(favObj => +favObj.keys === +obj.keys);
+      if (findItem) {
+        setFavorites(prew => prew.filter(item => +item.keys !== +obj.keys));
+        await axios.delete(`https://61012ec14e50960017c29c6a.mockapi.io/favorites/${findItem.id}`);
       } else {
+        setFavorites(prew => [...prew, obj]);
         const { data } = await axios.post('https://61012ec14e50960017c29c6a.mockapi.io/favorites', obj);
-        changeSneaker(data);
         setFavorites(prew => [...prew, data]);
       }
     } catch (error) {
