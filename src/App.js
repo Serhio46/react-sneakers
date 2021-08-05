@@ -63,7 +63,14 @@ function App() {
       } else {
         setCartItems(prew => [...prew, obj]);
         const { data } = await axios.post('https://61012ec14e50960017c29c6a.mockapi.io/Cart', obj);
-        setCartItems(prew => [...prew, data]);
+        setCartItems(prew => prew.map(item => {
+          if (item.keys === data.keys) {
+            return {
+              ...item,
+              id: data.id
+            }
+          }
+        }));
       }
     } catch (error) {
       alert('Не удалось доюавить в корзину');
