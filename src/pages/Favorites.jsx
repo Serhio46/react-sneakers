@@ -1,25 +1,37 @@
-import Card from '../components/Card/'
+import React, { useEffect } from 'react';
 
-function Favorites({ sneakers, onAddToFavorite, isLiked }) {
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLoadFavoritesItems } from '../Redux/Actions/favoriteAction';
+
+import Card from '../components/Card/';
+
+function Favorites({ onAddToFavorite }) {
+
+	const dispatch = useDispatch();
+	const favorites = useSelector(({ favoriteReducer }) => favoriteReducer);
+	const cartItems = useSelector(({ cartItemsReducer }) => cartItemsReducer.items);
+
+	useEffect(() => {
+		dispatch(fetchLoadFavoritesItems())
+	}, []);
 
 	return (
 		<div className='content'>
 			<div className='title'>
 				<h1>Мои закладки</h1>
-
 			</div>
 			<div className='sneakers'>
-				{sneakers
+				{favorites && favorites
 					.map((obj, index) =>
 						<Card
+							favorites={favorites}
+							cartItems={cartItems}
 							onFavorite={onAddToFavorite}
-							isLiked={isLiked}
 							{...obj}
 							key={`${obj.title}_${index}`} />)}
 			</div>
 		</div>
-
 	);
-}
+};
 
 export default Favorites;

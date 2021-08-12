@@ -1,17 +1,39 @@
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { fetchLoadSneakers } from '../Redux/Actions/sneakersAction';
+import { fetchLoadCartItems } from '../Redux/Actions/cartItemAction';
+import { fetchLoadFavoritesItems } from '../Redux/Actions/favoriteAction';
+
 import Card from '../components/Card';
 
-function Home({ isLoading, sneakers, searchValue, setSearchValue, onChangeSearch, onAddToFavorite, addToCart, isLiked }) {
+function Home() {
+
+	const [searchValue, setSearchValue] = useState('');
+
+	const dispatch = useDispatch();
+	const { items: sneakers, isLoading } = useSelector(({ sneakersReducer }) => sneakersReducer);
+	const cartItems = useSelector(({ cartItemsReducer }) => cartItemsReducer.items);
+	const favorites = useSelector(({ favoriteReducer }) => favoriteReducer);
+
+	useEffect(() => {
+		dispatch(fetchLoadSneakers());
+		dispatch(fetchLoadCartItems());
+		dispatch(fetchLoadFavoritesItems());
+	}, []);
+
+	//Управляемый поиск оставил здесь, или его тоже переносить в редакс???
+	const onChangeSearch = (e) => {
+		setSearchValue(e.target.value);
+	};
 
 	const renderItems = () => {
-
 		const filtered = sneakers.filter(item => item.title.toUpperCase().includes(searchValue.toUpperCase()));
-
 		return (isLoading ? [...Array(10)] : filtered)
 			.map((obj, index) =>
 				<Card
-					isLiked={isLiked}
-					onFavorite={onAddToFavorite}
-					onAddToCart={addToCart}
+					favorites={favorites}
+					cartItems={cartItems}
 					{...obj}
 					isLoading={isLoading}
 					key={index} />)
@@ -32,6 +54,6 @@ function Home({ isLoading, sneakers, searchValue, setSearchValue, onChangeSearch
 			</div>
 		</div>
 	);
-}
+};
 
 export default Home;

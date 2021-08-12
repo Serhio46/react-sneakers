@@ -1,24 +1,17 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchLoadOrder } from '../Redux/Actions/orderAction';
+
 import Card from '../components/Card/';
 
 function Orders() {
 
-	const [order, setOrder] = useState([]);
-	const [isLoading, setIsLoading] = useState(true);
+	const dispatch = useDispatch();
+	const { order, isLoading } = useSelector(({ orderReducer }) => orderReducer);
 
 	useEffect(() => {
-
-		(async () => {
-			try {
-				const { data } = await axios.get('https://61012ec14e50960017c29c6a.mockapi.io/Orders');
-				setOrder(data.map((obj) => obj.items).flat());
-				setIsLoading(false);
-			}
-			catch (error) {
-				alert('Ошибка загрузки страницы');
-			}
-		})();
+		dispatch(fetchLoadOrder())
 	}, []);
 
 	return (

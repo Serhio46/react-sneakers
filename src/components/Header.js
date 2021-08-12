@@ -1,9 +1,16 @@
 import { Link } from 'react-router-dom';
-import { useCart } from '../hooks/useCart';
 
-function Header({ onClickCloseCart }) {
+import { useSelector, useDispatch } from 'react-redux';
+import { closeCart } from '../Redux/Actions/cartItemAction';
 
-  const { totalPrice } = useCart();
+function Header() {
+
+  const totalPrice = useSelector(({ cartItemsReducer }) => cartItemsReducer.totalPrice);
+  const dispatch = useDispatch();
+
+  const onClickClose = () => {
+    dispatch(closeCart());
+  };
 
   return (
     <header>
@@ -17,7 +24,7 @@ function Header({ onClickCloseCart }) {
         </div>
       </Link>
       <ul className='headerRight'>
-        <li className='cartBut' onClick={onClickCloseCart}>
+        <li className='cartBut' onClick={onClickClose}>
           <img className='cartButton' height={18} width={18} src="img/cart.svg" alt="Cart" />
           <span>{totalPrice} руб.</span>
         </li>
@@ -34,6 +41,6 @@ function Header({ onClickCloseCart }) {
       </ul>
     </header>
   );
-}
+};
 
 export default Header;
