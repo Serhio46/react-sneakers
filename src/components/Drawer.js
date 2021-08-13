@@ -18,7 +18,7 @@ function Drawer() {
 
 	useEffect(() => {
 		dispatch(fetchLoadCartItems());
-	}, []);
+	}, [dispatch]);
 
 	const onClickClose = () => {
 		dispatch(closeCart());
@@ -34,8 +34,17 @@ function Drawer() {
 	};
 
 	const onClickOrder = (cartItems) => {
+		const dateOrder = new Date();
+		let minutes = dateOrder.getMinutes();
+		if (minutes < 10) {
+			minutes = `0${minutes}`;
+		};
+		const dateVision = `${dateOrder.getDate()}.${dateOrder.getMonth() + 1}.${dateOrder.getFullYear()} - ${dateOrder.getHours()}:${minutes}`;
 		dispatch(loading());
-		dispatch(fetchSendOrder({ items: cartItems }, cartItems));
+		dispatch(fetchSendOrder({
+			items: cartItems,
+			date: dateVision,
+		}, cartItems));
 		dispatch(changeOrderStatus());
 		dispatch(loading());
 	};

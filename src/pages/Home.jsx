@@ -20,7 +20,7 @@ function Home() {
 		dispatch(fetchLoadSneakers());
 		dispatch(fetchLoadCartItems());
 		dispatch(fetchLoadFavoritesItems());
-	}, []);
+	}, [dispatch]);
 
 	//Управляемый поиск оставил здесь, или его тоже переносить в редакс???
 	const onChangeSearch = (e) => {

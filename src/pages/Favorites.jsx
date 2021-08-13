@@ -13,7 +13,7 @@ function Favorites({ onAddToFavorite }) {
 
 	useEffect(() => {
 		dispatch(fetchLoadFavoritesItems())
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<div className='content'>
