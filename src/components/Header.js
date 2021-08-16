@@ -14,7 +14,7 @@ function Header() {
 
   return (
     <header>
-      <Link className='link' to='/'>
+      <Link className='link' to={process.env.PUBLIC_URL + '/'}>
         <div className='headerLeft'>
           <img height={40} width={40} src="img/logo.png" alt="ЛОГО" />
           <div className='headerInfo'>

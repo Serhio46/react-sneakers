@@ -1,0 +1,355 @@
+body {
+  margin: 0;
+  font-family: Inter, system-ui;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  font-family: Inter, system-ui;
+}
+
+.wrapper {
+  background: #ffffff;
+  -webkit-box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+          box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  max-width: 1080px;
+  margin: 50px auto;
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 1;
+}
+
+.drawer {
+  position: absolute;
+  width: 420px;
+  right: 0;
+  height: 100%;
+  background: #ffffff;
+  -webkit-box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+          box-shadow: -10px 4px 24px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  border-radius: 0 20px 20px 0;
+}
+
+.drawer .cartEmpty {
+  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.drawer .cartEmpty img {
+  margin-bottom: 20px;
+}
+
+.drawer .cartEmpty p {
+  opacity: 0.6;
+  width: 280px;
+  line-height: 24px;
+}
+
+.drawer .cartEmpty .greenButton {
+  position: relative;
+}
+
+.drawer .cartEmpty .greenButton:hover img {
+  -webkit-transform: rotate(180deg) translateX(10px);
+          transform: rotate(180deg) translateX(10px);
+}
+
+.drawer .cartEmpty .greenButton img {
+  position: absolute;
+  left: 30px;
+  top: 20.5px;
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+
+.drawer h2 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.items {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  overflow: auto;
+}
+
+.cartTotalBlock ul {
+  -webkit-padding-start: 0px;
+          padding-inline-start: 0px;
+  margin-bottom: 40px;
+}
+
+.cartTotalBlock ul li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  margin-bottom: 19px;
+}
+
+.cartTotalBlock ul li div {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  height: 1px;
+  border-bottom: 1px dashed #dfdfdf;
+  position: relative;
+  top: -4px;
+  margin: 0 10px;
+}
+
+.cartTotalBlock .greenButton {
+  position: relative;
+}
+
+.cartTotalBlock .greenButton:hover img {
+  -webkit-transform: translateX(10px);
+          transform: translateX(10px);
+}
+
+.cartTotalBlock .greenButton img {
+  position: absolute;
+  right: 30px;
+  top: 20.5px;
+  -webkit-transition: -webkit-transform 0.2s ease-in-out;
+  transition: -webkit-transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out;
+  transition: transform 0.2s ease-in-out, -webkit-transform 0.2s ease-in-out;
+}
+
+.greenButton {
+  width: 100%;
+  height: 55px;
+  background: #9dd558;
+  border-radius: 18px;
+  border: 0;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.greenButton:hover {
+  background: #b5df81;
+}
+
+.greenButton:disabled {
+  background-color: #bebebe;
+  cursor: default;
+}
+
+.greenButton:active {
+  background: #91d044;
+}
+
+header {
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 40px;
+  border-bottom: 1px solid #eaeaea;
+}
+
+header .link {
+  text-decoration: none;
+}
+
+header .link:visited {
+  color: inherit;
+}
+
+header .headerLeft {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .headerLeft img {
+  margin-right: 15px;
+}
+
+header .headerLeft h3,
+header .headerLeft p {
+  margin: 0;
+}
+
+header .headerRight {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  padding: 0;
+}
+
+header .headerRight .cartBut {
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+header .headerRight li {
+  list-style: none;
+  cursor: pointer;
+}
+
+header .headerRight li .heart {
+  margin-right: 30px;
+}
+
+header .headerRight li .cartButton {
+  margin-right: 25px;
+}
+
+.content {
+  padding: 40px;
+}
+
+.title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 0 40px 0;
+}
+
+.search-block {
+  border: 1px solid #f3f3f3;
+  border-radius: 10px;
+  padding: 0 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+}
+
+.search-block .clear {
+  position: absolute;
+  right: 10px;
+  width: 18px;
+  height: 18px;
+}
+
+.search-block input {
+  border: 0;
+  padding: 13px;
+  font-size: 16px;
+  width: 200px;
+}
+
+.sneakers {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  white-space: pre-line;
+}
+
+.cartItem {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border: 1px solid #f2f2f2;
+  border-radius: 20px;
+  overflow: hidden;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.cartItem .itemImage {
+  margin-right: 20px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -o-object-position: 0 -5px;
+     object-position: 0 -5px;
+}
+
+.cartItem p {
+  font-size: 16px;
+}
+
+.cartItem b {
+  font-size: 14px;
+}
+
+.cartItem .cartInfo {
+  margin-right: 20px;
+}
+
+.btn-remove {
+  opacity: 0.5;
+  cursor: pointer;
+  margin: 0;
+}
+
+.btn-remove:hover {
+  opacity: 1;
+}

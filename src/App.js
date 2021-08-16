@@ -16,7 +16,7 @@ function App() {
     <div className="wrapper">
       {cartOpen && <Drawer />}
       <Header />
-      <Route path='/' exact>
+      <Route path={process.env.PUBLIC_URL + '/'} exact>
         <Home />
       </Route>
       <Route path='/favorites' exact>
