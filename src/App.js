@@ -19,10 +19,10 @@ function App() {
       <Route path={process.env.PUBLIC_URL + '/'} exact>
         <Home />
       </Route>
-      <Route path='/favorites' exact>
+      <Route path={process.env.PUBLIC_URL + '/favorites'} exact>
         <Favorites />
       </Route>
-      <Route path='/order' exact>
+      <Route path={process.env.PUBLIC_URL + '/order'} exact>
         <Orders />
       </Route>
     </div>

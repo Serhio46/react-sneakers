@@ -29,12 +29,12 @@ function Header() {
           <span>{totalPrice} руб.</span>
         </li>
         <li>
-          <Link to='/favorites'>
+          <Link to={process.env.PUBLIC_URL + '/favorites'}>
             <img className='heart' height={18} width={18} src="img/heart.svg" alt="Закладки" />
           </Link>
         </li>
         <li>
-          <Link to='/order'>
+          <Link to={process.env.PUBLIC_URL + '/order'}>
             <img height={18} width={18} src="img/user.svg" alt="Пользователь" />
           </Link>
         </li>
